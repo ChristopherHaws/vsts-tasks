@@ -114,15 +114,15 @@ declare module 'vsts-task-lib/toolrunner' {
 
 }
 declare module 'vsts-task-lib/task' {
-	/// <reference path="../definitions/shelljs.d.ts" />
-	/// <reference path="../definitions/minimatch.d.ts" />
-	/// <reference path="../definitions/glob.d.ts" />
+	/// <reference path="../shelljs/shelljs.d.ts" />
+	/// <reference path="../minimatch/minimatch.d.ts" />
+	/// <reference path="../glob/glob.d.ts" />
 	/// <reference path="../node/node.d.ts" />
 	/// <reference path="../q/Q.d.ts" />
     import * as Q from "q";
     import * as events from "events";
-	import fs = require('fs');
-	import trm = require('vsts-task-lib/toolrunner');
+	import * as fs from "fs";
+	import * as trm from "vsts-task-lib/toolrunner";
 	export enum TaskResult {
 	    Succeeded = 0,
 	    Failed = 1,

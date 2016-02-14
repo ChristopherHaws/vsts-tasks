@@ -1,50 +1,50 @@
 {
-  "id": "5903cb00-ce04-11e5-9ced-496fa9a4c87d",
-  "name": "IisWebAppRemove",
-  "friendlyName": "Remove Web App",
-  "description": "Removed a Web App",
-  "author": "Christopher Haws",
-  "helpMarkDown": "Replace with markdown to show in help",
-  "category": "Utility",
-  "visibility": [
-    "Build",
-    "Release"
-  ],
-  "demands": [],
-  "version": {
-    "Major": "0",
-    "Minor": "1",
-    "Patch": "0"
-  },
-  "minimumAgentVersion": "1.83.0",
-  "instanceNameFormat": "IisWebAppRemove $(message)",
-  "inputs": [
-    {
-      "name": "cwd",
-      "type": "filePath",
-      "label": "Working Directory",
-      "defaultValue": "",
-      "required": false,
-      "helpMarkDown": "Current working directory when IisWebAppRemove is run."
-    },
-    {
-      "name": "msg",
-      "type": "string",
-      "label": "Message",
-      "defaultValue": "Hello World",
-      "required": true,
-      "helpMarkDown": "Message to echo out"
-    }
-  ],
-  "execution": {
-    "Node": {
-      "target": "sample.js",
-      "argumentFormat": ""
-    },
-    "PowerShell": {
-      "target": "$(currentDirectory)\\sample.ps1",
-      "argumentFormat": "",
-      "workingDirectory": "$(currentDirectory)"
-    }
-  }
+	"id": "5903cb00-ce04-11e5-9ced-496fa9a4c87d",
+	"name": "IisWebAppRemove",
+	"friendlyName": "Remove Web App",
+	"description": "Removed a Web App",
+	"author": "Christopher Haws",
+	"helpMarkDown": "Replace with markdown to show in help",
+	"category": "Utility",
+	"visibility": [
+		"Build",
+		"Release"
+	],
+	"demands": [],
+	"version": {
+		"Major": "0",
+		"Minor": "1",
+		"Patch": "0"
+	},
+	"minimumAgentVersion": "1.83.0",
+	"instanceNameFormat": "IisWebAppRemove $(message)",
+	"inputs": [
+		{
+			"name": "cwd",
+			"type": "filePath",
+			"label": "Working Directory",
+			"defaultValue": "",
+			"required": false,
+			"helpMarkDown": "Current working directory when IisWebAppRemove is run."
+		},
+		{
+			"name": "msg",
+			"type": "string",
+			"label": "Message",
+			"defaultValue": "Hello World",
+			"required": true,
+			"helpMarkDown": "Message to echo out"
+		}
+	],
+	"execution": {
+		"Node": {
+			"target": "sample.js",
+			"argumentFormat": ""
+		},
+		"PowerShell": {
+			"target": "$(currentDirectory)\\sample.ps1",
+			"argumentFormat": "",
+			"workingDirectory": "$(currentDirectory)"
+		}
+	}
 }

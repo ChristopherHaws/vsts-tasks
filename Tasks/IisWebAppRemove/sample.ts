@@ -1,5 +1,5 @@
-var path = require('path');
-var tl = require('vsts-task-lib/task');
+import * as path from "path";
+import * as tl from "vsts-task-lib/task";
 
 var echo = new tl.ToolRunner(tl.which('echo', true));
 
