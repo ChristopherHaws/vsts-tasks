@@ -10,10 +10,11 @@ var project = typescript.createProject("tsconfig.json");
 gulp.task('build', function (cb) {
     return gulp
 		.src([
-			'typings/**/*.d.ts',
-			'Tasks/**/*.ts'
-		])
-        .pipe(typescript(project));
+			'./typings/**/*.d.ts',
+			'./Tasks/**/*.ts'
+		], { base: "." })
+        .pipe(typescript(project))
+		.pipe(gulp.dest('.'));
 });
 
 gulp.task('default', ['build']);
