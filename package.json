@@ -4,13 +4,16 @@
 	"description": "Tasks for VSTS Build system",
 	"main": "gulpfile.js",
 	"dependencies": {
-		"iis": "^0.2.0"
+		"iis": "^0.2.0",
+		"vso-task-lib": "^0.5.5",
+		"vsts-task-lib": "^0.5.10"
 	},
 	"devDependencies": {
+		"del": "^1.1.1",
 		"gulp": "^3.8.11",
 		"gulp-typescript": "^2.11.0",
-		"del": "^1.1.1",
-		"vsts-task-lib": "^0.5.10"
+		"gulp-install": "^0.6.0",
+		"gulp-tsd": "^0.1.0"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"

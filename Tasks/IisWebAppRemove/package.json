@@ -1,0 +1,12 @@
+{
+	"name": "iis-task",
+	"version": "1.0.0",
+	"description": "Used to controll IIS from VSTS Build Server",
+	"dependencies": {
+		"iis": "^0.2.0",
+		"vso-task-lib": "^0.5.5",
+		"vsts-task-lib": "^0.5.10"
+	},
+	"author": "Christopher Haws",
+	"license": "ISC"
+}
