@@ -1,9 +1,0 @@
-{
-	"compilerOptions": {
-		"module": "amd",
-		"target": "es5",
-		"noImplicitAny": true,
-		"suppressImplicitAnyIndexErrors":  true,
-		"noResolve": true
-	}
-}

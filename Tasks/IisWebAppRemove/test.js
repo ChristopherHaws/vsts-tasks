@@ -1,7 +1,7 @@
-import * as operatingSystem from "os";
-import * as fileSystem from "fs";
-import * as childProcess from "child_process";
-import * as task from "vsts-task-lib/task";
+var operatingSystem = require("os");
+var fileSystem = require("fs");
+var childProcess = require("child_process");
+var task = require("vsts-task-lib/task");
 
 var appCmd = "";
 
