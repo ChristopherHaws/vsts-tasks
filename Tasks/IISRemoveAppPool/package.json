@@ -5,7 +5,8 @@
 	"dependencies": {
 		"iis": "^0.2.0",
 		"vso-task-lib": "^0.5.5",
-		"vsts-task-lib": "^0.5.10"
+		"vsts-task-lib": "^0.5.10",
+		"vsts-iis": "file:../../Shared/vsts-iis"
 	},
 	"author": "Christopher Haws",
 	"license": "ISC"
