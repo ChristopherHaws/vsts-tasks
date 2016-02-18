@@ -1,8 +1,8 @@
 {
 	"id": "5903cb00-ce04-11e5-9ced-496fa9a4c87d",
-	"name": "IisWebAppRemove",
-	"friendlyName": "Remove Web App",
-	"description": "Removed a Web App",
+	"name": "IISCommand",
+	"friendlyName": "IIS Command",
+	"description": "Executes a command against IIS",
 	"author": "Christopher Haws",
 	"helpMarkDown": "Replace with markdown to show in help",
 	"category": "Utility",
@@ -17,7 +17,7 @@
 		"Patch": "0"
 	},
 	"minimumAgentVersion": "1.83.0",
-	"instanceNameFormat": "IisWebAppRemove $(message)",
+	"instanceNameFormat": "IIS Task $(message)",
 	"inputs": [
 		{
 			"name": "cwd",
@@ -25,7 +25,7 @@
 			"label": "Working Directory",
 			"defaultValue": "",
 			"required": false,
-			"helpMarkDown": "Current working directory when IisWebAppRemove is run."
+			"helpMarkDown": "Current working directory when IIS Task is run."
 		},
 		{
 			"name": "msg",
