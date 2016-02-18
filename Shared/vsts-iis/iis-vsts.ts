@@ -1,0 +1,1 @@
+import * as vsts from "vsts-task-lib/task";

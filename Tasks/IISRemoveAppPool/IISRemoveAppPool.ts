@@ -1,3 +1,4 @@
 //import * as runner from "vsts-task-lib/toolrunner";
-var iis = require("iis");
+import * as iis from "iis";
+
 iis.deleteAppPool("Foo");
