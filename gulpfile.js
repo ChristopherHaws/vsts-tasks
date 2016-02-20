@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var typescript = require('gulp-typescript');
 var install = require('gulp-install');
 var debug = require('gulp-debug');
+var merge = require('merge2');
 var project = typescript.createProject("tsconfig.json")
 
 gulp.task('project-npm', function (cb) {
@@ -13,7 +14,6 @@ gulp.task('project-npm', function (cb) {
 gulp.task('task-npm', ['project-npm'], function (cb) {
 	return gulp
 		.src([
-			'./Shared/**/package.json',
 			'./Tasks/**/package.json',
 			'!**/node_modules/**'
 		])
@@ -21,15 +21,18 @@ gulp.task('task-npm', ['project-npm'], function (cb) {
 		.pipe(install());
 });
 
-gulp.task('typescript', ['task-npm'], function (cb) {
+gulp.task('task-typescript', ['task-npm'], function (cb) {
     return gulp
         .src([
             './typings/**/*.d.ts',
-            './Shared/**/*.ts',
             './Tasks/**/*.ts'
         ], { base: "." })
         .pipe(typescript(project))
-        .pipe(gulp.dest('.'));
+		.js.pipe(gulp.dest('.'));
 });
 
-gulp.task('default', ['project-npm', 'task-npm', 'typescript']);
+gulp.task('default', [
+	'project-npm',
+	'task-npm',
+	'task-typescript'
+]);

@@ -1,5 +1,13 @@
 //import * as runner from "vsts-task-lib/toolrunner";
-// import * as iis from "iis";
+import * as iis from "vsts-iis";
+
+iis.Sites.addSync({
+	name: "Foo",
+	protocol: "https",
+	host: "*",
+	port: 443
+});
+
 // 
 // iis.createSiteSync({
 // 	name: "Foo",

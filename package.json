@@ -7,7 +7,8 @@
 		"gulp": "^3.8.11",
 		"gulp-install": "^0.6.0",
 		"gulp-debug": "^2.1.2",
-		"gulp-typescript": "^2.11.0"
+		"gulp-typescript": "^2.11.0",
+		"merge2": "^1.0.1"
 	},
 	"author": "Christopher Haws",
 	"license": "ISC"
