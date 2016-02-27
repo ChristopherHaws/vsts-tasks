@@ -1,16 +1,19 @@
-//import * as runner from "vsts-task-lib/toolrunner";
+var vsts = require("vsts-task-lib/task");
 var iis = require("vsts-iis");
-iis.Sites.addSync({
-    name: "Foo",
-    protocol: "https",
-    host: "*",
-    port: 443
+var name = vsts.getInput("AppPoolName", true);
+iis.AppPools.exists(name)
+    .then(function (exists) {
+    if (exists) {
+        return iis.AppPools.remove(name);
+    }
+    else {
+        vsts.warning("AppPool does not exist.");
+        vsts.exit(0);
+    }
+})
+    .then(function () {
+    vsts.exit(0);
+})
+    .fail(function () {
+    vsts.exit(1);
 });
-// 
-// iis.createSiteSync({
-// 	name: "Foo",
-// 	protocol: "https",
-// 	host: "*",
-// 	port: 433,
-// 	path: "C:\\application\\manzanita"
-// }); 

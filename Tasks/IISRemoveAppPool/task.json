@@ -1,8 +1,8 @@
 {
 	"id": "5903cb00-ce04-11e5-9ced-496fa9a4c87d",
-	"name": "IISCommand",
-	"friendlyName": "IIS Command",
-	"description": "Executes a command against IIS",
+	"name": "IISRemoveAppPool",
+	"friendlyName": "IIS Remove AppPool",
+	"description": "Removed an AppPool from IIS",
 	"author": "Christopher Haws",
 	"helpMarkDown": "Replace with markdown to show in help",
 	"category": "Utility",
@@ -17,34 +17,21 @@
 		"Patch": "0"
 	},
 	"minimumAgentVersion": "1.83.0",
-	"instanceNameFormat": "IIS Task $(message)",
+	"instanceNameFormat": "Remove AppPool $(message)",
 	"inputs": [
 		{
-			"name": "cwd",
-			"type": "filePath",
-			"label": "Working Directory",
-			"defaultValue": "",
-			"required": false,
-			"helpMarkDown": "Current working directory when IIS Task is run."
-		},
-		{
-			"name": "msg",
+			"name": "AppPoolName",
 			"type": "string",
-			"label": "Message",
-			"defaultValue": "Hello World",
+			"label": "AppPool Name",
+			"defaultValue": "",
 			"required": true,
-			"helpMarkDown": "Message to echo out"
+			"helpMarkDown": "The name of the AppPool to remove from IIS."
 		}
 	],
 	"execution": {
 		"Node": {
-			"target": "sample.js",
+			"target": "IISRemoveAppPool.js",
 			"argumentFormat": ""
-		},
-		"PowerShell": {
-			"target": "$(currentDirectory)\\sample.ps1",
-			"argumentFormat": "",
-			"workingDirectory": "$(currentDirectory)"
 		}
 	}
 }
