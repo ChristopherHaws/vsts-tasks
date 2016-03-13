@@ -28,7 +28,7 @@ Import-Module "Microsoft.TeamFoundation.DistributedTask.Task.Deployment.RemoteDe
 
 $webSiteName = $webSiteName.Trim('"', ' ')
 
-$scriptContent = Get-Content  ./RemoveWebsiteOnTargetMachines.ps1 | Out-String
+$scriptContent = Get-Content  ./StopWebsiteOnTargetMachines.ps1 | Out-String
 $scriptArgs = " -WebSiteName `"$webSiteName`""
 
 #$scriptArgs = @(
@@ -53,4 +53,4 @@ if(-not [string]::IsNullOrEmpty($errorMessage))
     throw "$errorMessage"
 }
 
-Write-Output "Successfully removed IIS Website : $webSiteName"
+Write-Output "Successfully stopped IIS Website : $webSiteName"
