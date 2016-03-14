@@ -10,6 +10,7 @@ param (
 	[string]$deployInParallel
 )
 
+Write-Verbose "Entering script StopWebsite.ps1" -Verbose
 Write-Verbose "environmentName = $environmentName" -Verbose
 Write-Verbose "adminUserName = $adminUserName" -Verbose
 Write-Verbose "winrm protocol to connect to machine  = $winrmProtocol" -Verbose
@@ -30,10 +31,6 @@ $webSiteName = $webSiteName.Trim('"', ' ')
 
 $scriptContent = Get-Content  ./StopWebsiteOnTargetMachines.ps1 | Out-String
 $scriptArgs = " -WebSiteName `"$webSiteName`""
-
-#$scriptArgs = @(
-#	""
-#)
 
 Write-Verbose "Script Arguments : $scriptArgs" -Verbose
 

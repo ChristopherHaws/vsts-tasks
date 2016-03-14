@@ -10,7 +10,7 @@ param (
 	[string]$deployInParallel
 )
 
-Write-Verbose "Entering script RemoveWebsite.ps1" -Verbose
+Write-Verbose "Entering script StartWebsite.ps1" -Verbose
 Write-Verbose "environmentName = $environmentName" -Verbose
 Write-Verbose "adminUserName = $adminUserName" -Verbose
 Write-Verbose "winrm protocol to connect to machine  = $winrmProtocol" -Verbose
@@ -29,7 +29,7 @@ Import-Module "Microsoft.TeamFoundation.DistributedTask.Task.Deployment.RemoteDe
 
 $webSiteName = $webSiteName.Trim('"', ' ')
 
-$scriptContent = Get-Content  ./RemoveWebsiteOnTargetMachines.ps1 | Out-String
+$scriptContent = Get-Content  ./StartWebsiteOnTargetMachines.ps1 | Out-String
 $scriptArgs = " -WebSiteName `"$webSiteName`""
 
 Write-Verbose "Script Arguments : $scriptArgs" -Verbose
@@ -50,4 +50,4 @@ if(-not [string]::IsNullOrEmpty($errorMessage))
     throw "$errorMessage"
 }
 
-Write-Output "Successfully removed IIS Website : $webSiteName"
+Write-Output "Successfully started IIS Website : $webSiteName"

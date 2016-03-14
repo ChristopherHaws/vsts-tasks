@@ -2,7 +2,10 @@ param (
 	[string]$webSiteName
 )
 
+Write-Verbose "Entering script StopWebsiteOnTargetMachines.ps1" -Verbose
 Write-Verbose "WebSiteName = $webSiteName" -Verbose
+
+$webSiteName = $webSiteName.Trim('"', ' ')
 
 function Import-WebAdministration {
 	$ModuleName = "WebAdministration"
@@ -52,8 +55,8 @@ Import-WebAdministration
 $site = Get-Website -Name $webSiteName
 
 if ($site) {
-	Write-Verbose -Object "Stopping website..." -Verbose
+	Write-Verbose "Stopping website..." -Verbose
 	$site.Stop()
 } else {
-	Write-Warning -Object "Website does not exist."
+	Write-Verbose "Website does not exist." -Verbose
 }

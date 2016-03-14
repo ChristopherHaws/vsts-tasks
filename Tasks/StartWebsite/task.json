@@ -1,10 +1,10 @@
 {
-	"id": "86c89218-aaaa-46ae-87a7-a6aa97f48f82",
-	"name": "RemoveWebsite",
-	"friendlyName": "IIS: Remove Website",
-	"description": "Removes a Website from IIS",
+	"id": "33afa4c8-3d3d-441b-94d9-254be0379d41",
+	"name": "StartWebsite",
+	"friendlyName": "IIS: Start Website",
+	"description": "Starts a Website from IIS",
 	"author": "Christopher Haws",
-	"helpMarkDown": "Replace with markdown to show in help",
+	"helpMarkDown": "v0.1.0",
 	"category": "Deploy",
 	"visibility": [
 		"Build",
@@ -14,10 +14,10 @@
 	"version": {
 		"Major": "0",
 		"Minor": "1",
-		"Patch": "5"
+		"Patch": "1"
 	},
 	"minimumAgentVersion": "1.83.0",
-	"instanceNameFormat": "Remove Website $(WebsiteName)",
+	"instanceNameFormat": "Start Website $(WebsiteName)",
 	"inputs": [
 		{
 			"name": "EnvironmentName",
@@ -70,12 +70,12 @@
 			"label": "Name",
 			"defaultValue": "",
 			"required": true,
-			"helpMarkDown": "The name of the Website to remove from IIS."
+			"helpMarkDown": "The name of the website."
 		}
 	],
 	"execution": {
 		"PowerShell": {
-			"target": "$(currentDirectory)\\RemoveWebsite.ps1",
+			"target": "$(currentDirectory)\\StartWebsite.ps1",
 			"argumentFormat": "",
         	"workingDirectory": "$(currentDirectory)"
 		}
