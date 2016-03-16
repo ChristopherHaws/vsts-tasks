@@ -1,0 +1,83 @@
+{
+	"id": "988ef2f5-7332-4b29-96f5-0ad942dcc5d4",
+	"name": "CreateWebsite",
+	"friendlyName": "IIS: Create Website",
+	"description": "Creates a Website in IIS",
+	"author": "Christopher Haws",
+	"helpMarkDown": "v0.1.0",
+	"category": "Deploy",
+	"visibility": [
+		"Build",
+		"Release"
+	],
+	"demands": [],
+	"version": {
+		"Major": "0",
+		"Minor": "1",
+		"Patch": "1"
+	},
+	"minimumAgentVersion": "1.83.0",
+	"instanceNameFormat": "Create Website $(WebsiteName)",
+	"inputs": [
+		{
+			"name": "EnvironmentName",
+			"type": "multiLine",
+			"label": "Machines",
+			"defaultValue": "",
+			"required": true,
+			"helpMarkDown": "Provide a comma separated list of machine IP addresses or FQDNs along with ports. Port is defaulted based on the selected protocol. <br>Eg: dbserver.fabrikam.com,dbserver_int.fabrikam.com:5986,192.168.12.34:5986 <br>Or provide output variable of other tasks. Eg: $(variableName)"
+		},
+		{
+			"name": "AdminUserName",
+			"type": "string",
+			"label": "Admin Login",
+			"defaultValue": "",
+			"required": false,
+			"helpMarkDown": "Administrator login for the target machines."
+		},
+		{
+			"name": "AdminPassword",
+			"type": "string",
+			"label": "Password",
+			"defaultValue": "",
+			"required": false,
+			"helpMarkDown": "Administrator password for the target machines. <br>It can accept variable defined in Build/Release definitions as '$(passwordVariable)'. <br>You may mark variable type as 'secret' to secure it. "
+		},
+		{
+			"name": "WinRMProtocol",
+			"type": "radio",
+			"label": "Protocol",
+			"required": false,
+			"defaultValue": "",
+			"options": {
+				"Http": "HTTP",
+				"Https": "HTTPS"
+			},
+			"helpMarkDown": "Select the protocol to use for the WinRM connection with the machine(s). Default is HTTPS."
+		},
+		{
+			"name": "TestCertificate",
+			"type": "boolean",
+			"label": "Test Certificate",
+			"defaultValue": "true",
+			"visibleRule": "WinRMProtocol = Https",
+			"required": false,
+			"helpMarkDown": "Select the option to skip validating the authenticity of the machine's certificate by a trusted certification authority. The parameter is required for the WinRM HTTPS protocol."
+		},
+		{
+			"name": "WebsiteName",
+			"type": "string",
+			"label": "Name",
+			"defaultValue": "",
+			"required": true,
+			"helpMarkDown": "The name of the website."
+		}
+	],
+	"execution": {
+		"PowerShell": {
+			"target": "$(currentDirectory)\\CreateWebsite.ps1",
+			"argumentFormat": "",
+        	"workingDirectory": "$(currentDirectory)"
+		}
+	}
+}
