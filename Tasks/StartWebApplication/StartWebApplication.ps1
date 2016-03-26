@@ -11,17 +11,17 @@ param (
 	[string]$deployInParallel
 )
 
-Write-Output "Entering script StartWebApplication.ps1"
-Write-Output "environmentName = $environmentName"
-Write-Output "adminUserName = $adminUserName"
-Write-Output "winrm protocol to connect to machine  = $winrmProtocol"
-Write-Output "testCertificate = $testCertificate"
-Write-Output "resourceFilteringMethod = $resourceFilteringMethod"
-Write-Output "machineFilter = $machineFilter"
-Write-Output "deployInParallel = $deployInParallel"
+Write-Verbose "Entering script StartWebApplication.ps1" -Verbose
+Write-Verbose "environmentName = $environmentName" -Verbose
+Write-Verbose "adminUserName = $adminUserName" -Verbose
+Write-Verbose "winrm protocol to connect to machine  = $winrmProtocol" -Verbose
+Write-Verbose "testCertificate = $testCertificate" -Verbose
+Write-Verbose "resourceFilteringMethod = $resourceFilteringMethod" -Verbose
+Write-Verbose "machineFilter = $machineFilter" -Verbose
+Write-Verbose "deployInParallel = $deployInParallel" -Verbose
 
-Write-Output "websiteName = $websiteName"
-Write-Output "applicationPoolName = $applicationPoolName"
+Write-Verbose "webSiteName = $webSiteName" -Verbose
+Write-Verbose "applicationPoolName = $applicationPoolName" -Verbose
 
 import-module "Microsoft.TeamFoundation.DistributedTask.Task.Internal"
 import-module "Microsoft.TeamFoundation.DistributedTask.Task.Common"

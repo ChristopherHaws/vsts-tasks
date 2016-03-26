@@ -4,7 +4,7 @@
 	"friendlyName": "IIS: Stop Web Application",
 	"description": "Stop an IIS website and application pool",
 	"author": "Christopher Haws",
-	"helpMarkDown": "v0.3.5",
+	"helpMarkDown": "v0.3.9",
 	"category": "Deploy",
 	"visibility": [
 		"Build",
@@ -14,7 +14,7 @@
 	"version": {
 		"Major": "0",
 		"Minor": "3",
-		"Patch": "5"
+		"Patch": "9"
 	},
 	"minimumAgentVersion": "1.83.0",
 	"instanceNameFormat": "Stop Web Application $(WebsiteName)",
@@ -59,8 +59,8 @@
 			"name": "WinRMProtocol",
 			"type": "radio",
 			"label": "Protocol",
-			"required": false,
-			"defaultValue": "",
+			"required": true,
+			"defaultValue": "Https",
 			"options": {
 				"Http": "HTTP",
 				"Https": "HTTPS"

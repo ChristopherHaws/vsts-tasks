@@ -4,7 +4,7 @@
 	"friendlyName": "IIS: Start Web Application",
 	"description": "Start an IIS website and application pool",
 	"author": "Christopher Haws",
-	"helpMarkDown": "v0.1.6",
+	"helpMarkDown": "v0.1.9",
 	"category": "Deploy",
 	"visibility": [
 		"Build",
@@ -14,7 +14,7 @@
 	"version": {
 		"Major": "0",
 		"Minor": "1",
-		"Patch": "6"
+		"Patch": "9"
 	},
 	"minimumAgentVersion": "1.83.0",
 	"instanceNameFormat": "Start Web Application $(WebsiteName)",
@@ -59,8 +59,8 @@
 			"name": "WinRMProtocol",
 			"type": "radio",
 			"label": "Protocol",
-			"required": false,
-			"defaultValue": "",
+			"required": true,
+			"defaultValue": "Https",
 			"options": {
 				"Http": "HTTP",
 				"Https": "HTTPS"

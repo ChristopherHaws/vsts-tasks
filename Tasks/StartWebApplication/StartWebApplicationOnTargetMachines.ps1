@@ -3,9 +3,9 @@ param (
 	[string]$applicationPoolName
 )
 
-Write-Output "Entering script StartWebApplicationOnTargetMachines.ps1"
-Write-Output "WebsiteName = $websiteName"
-Write-Output "ApplicationPoolName = $applicationPoolName"
+Write-Verbose "Entering script StartWebApplicationOnTargetMachines.ps1" -Verbose
+Write-Verbose "WebsiteName = $websiteName" -Verbose
+Write-Verbose "ApplicationPoolName = $applicationPoolName" -Verbose
 
 $websiteName = $websiteName.Trim('"', ' ')
 $applicationPoolName = $applicationPoolName.Trim('"', ' ')
