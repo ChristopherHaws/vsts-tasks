@@ -1,0 +1,115 @@
+{
+	"id": "8fd07f89-6bd5-4692-b85f-6e970d15a966",
+	"name": "StopWebApplication",
+	"friendlyName": "IIS: Stop Web Application",
+	"description": "Stop an IIS website and application pool",
+	"author": "Christopher Haws",
+	"helpMarkDown": "v0.3.3",
+	"category": "Deploy",
+	"visibility": [
+		"Build",
+		"Release"
+	],
+	"demands": [],
+	"version": {
+		"Major": "0",
+		"Minor": "3",
+		"Patch": "3"
+	},
+	"minimumAgentVersion": "1.83.0",
+	"instanceNameFormat": "Stop Web Application $(WebsiteName)",
+	"groups": [
+		{
+			"name": "website",
+			"displayName": "Website",
+			"isExpanded": true
+		},
+		{
+			"name": "applicationPool",
+			"displayName": "Application Pool",
+			"isExpanded": true
+		}
+	],
+	"inputs": [
+		{
+			"name": "EnvironmentName",
+			"type": "multiLine",
+			"label": "Machines",
+			"defaultValue": "",
+			"required": true,
+			"helpMarkDown": "Provide a comma separated list of machine IP addresses or FQDNs along with ports. Port is defaulted based on the selected protocol. <br>Eg: dbserver.fabrikam.com,dbserver_int.fabrikam.com:5986,192.168.12.34:5986 <br>Or provide output variable of other tasks. Eg: $(variableName)"
+		},
+		{
+			"name": "AdminUserName",
+			"type": "string",
+			"label": "Admin Login",
+			"defaultValue": "",
+			"required": false,
+			"helpMarkDown": "Administrator login for the target machines."
+		},
+		{
+			"name": "AdminPassword",
+			"type": "string",
+			"label": "Password",
+			"defaultValue": "",
+			"required": false,
+			"helpMarkDown": "Administrator password for the target machines. <br>It can accept variable defined in Build/Release definitions as '$(passwordVariable)'. <br>You may mark variable type as 'secret' to secure it. "
+		},
+		{
+			"name": "WinRMProtocol",
+			"type": "radio",
+			"label": "Protocol",
+			"required": false,
+			"defaultValue": "",
+			"options": {
+				"Http": "HTTP",
+				"Https": "HTTPS"
+			},
+			"helpMarkDown": "Select the protocol to use for the WinRM connection with the machine(s). Default is HTTPS."
+		},
+		{
+			"name": "TestCertificate",
+			"type": "boolean",
+			"label": "Test Certificate",
+			"defaultValue": "true",
+			"visibleRule": "WinRMProtocol = Https",
+			"required": false,
+			"helpMarkDown": "Select the option to skip validating the authenticity of the machine's certificate by a trusted certification authority. The parameter is required for the WinRM HTTPS protocol."
+		},
+		{
+			"name": "WebsiteName",
+			"type": "string",
+			"label": "Website",
+			"defaultValue": "",
+			"required": true,
+			"groupName": "website",
+			"helpMarkDown": "The name of the Website to stop in IIS."
+		},
+		{
+			"name": "StopApplicationPool",
+			"type": "boolean",
+			"label": "Stop Application Pool",
+			"required": false,
+			"groupName": "applicationPool",
+			"defaultValue": "false",
+			"helpMarkDown": "Select the option to stop an application pool."
+		},
+		{
+			"name": "ApplicationPoolName",
+			"type": "string",
+			"label": "Application Pool",
+			"defaultValue": "",
+			"required": true,
+			"groupName": "applicationPool",
+			"visibleRule": "StopApplicationPool = true",
+			"helpMarkDown": "The name of the Application Pool to stop in IIS."
+		}
+	],
+	"execution": {
+		"PowerShell": {
+			"target": "$(currentDirectory)\\StopWebApplication.ps1",
+			"argumentFormat": "",
+        	"workingDirectory": "$(currentDirectory)"
+		}
+	}
+}
