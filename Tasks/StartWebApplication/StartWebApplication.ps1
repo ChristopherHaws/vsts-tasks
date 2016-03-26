@@ -6,12 +6,12 @@ param (
 	[string]$testCertificate,
 	[string]$resourceFilteringMethod,
 	[string]$machineFilter,
-	[string]$webSiteName,
+	[string]$websiteName,
 	[string]$applicationPoolName,
 	[string]$deployInParallel
 )
 
-Write-Output "Entering script StopWebApplication.ps1"
+Write-Output "Entering script StartWebApplication.ps1"
 Write-Output "environmentName = $environmentName"
 Write-Output "adminUserName = $adminUserName"
 Write-Output "winrm protocol to connect to machine  = $winrmProtocol"
@@ -20,7 +20,7 @@ Write-Output "resourceFilteringMethod = $resourceFilteringMethod"
 Write-Output "machineFilter = $machineFilter"
 Write-Output "deployInParallel = $deployInParallel"
 
-Write-Output "webSiteName = $webSiteName"
+Write-Output "websiteName = $websiteName"
 Write-Output "applicationPoolName = $applicationPoolName"
 
 import-module "Microsoft.TeamFoundation.DistributedTask.Task.Internal"
@@ -29,11 +29,11 @@ import-module "Microsoft.TeamFoundation.DistributedTask.Task.DevTestLabs"
 Import-Module "Microsoft.TeamFoundation.DistributedTask.Task.Deployment.Internal"
 Import-Module "Microsoft.TeamFoundation.DistributedTask.Task.Deployment.RemoteDeployment"
 
-$webSiteName = $webSiteName.Trim('"', ' ')
+$websiteName = $websiteName.Trim('"', ' ')
 $applicationPoolName = $applicationPoolName.Trim('"', ' ')
 
-$scriptContent = Get-Content  ./StopWebApplicationOnTargetMachines.ps1 | Out-String
-$scriptArgs += " -WebSiteName `"$webSiteName`""
+$scriptContent = Get-Content  ./StartWebApplicationOnTargetMachines.ps1 | Out-String
+$scriptArgs += " -WebsiteName `"$websiteName`""
 $scriptArgs += " -ApplicationPoolName `"$applicationPoolName`""
 
 Write-Verbose "Script Arguments : $scriptArgs" -Verbose
@@ -54,4 +54,4 @@ if(-not [string]::IsNullOrEmpty($errorMessage))
     throw "$errorMessage"
 }
 
-Write-Output "Successfully stopped Web Application"
+Write-Output "Successfully started Web Application"

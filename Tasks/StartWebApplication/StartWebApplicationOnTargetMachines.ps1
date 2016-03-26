@@ -1,13 +1,13 @@
 param (
-	[string]$webSiteName,
+	[string]$websiteName,
 	[string]$applicationPoolName
 )
 
-Write-Output "Entering script StopWebApplicationOnTargetMachines.ps1"
-Write-Output "WebSiteName = $webSiteName"
+Write-Output "Entering script StartWebApplicationOnTargetMachines.ps1"
+Write-Output "WebsiteName = $websiteName"
 Write-Output "ApplicationPoolName = $applicationPoolName"
 
-$webSiteName = $webSiteName.Trim('"', ' ')
+$websiteName = $websiteName.Trim('"', ' ')
 $applicationPoolName = $applicationPoolName.Trim('"', ' ')
 
 function Import-WebAdministration {
@@ -55,36 +55,26 @@ function Import-WebAdministration {
 
 Import-WebAdministration
 
-# Stop the website
-if(![string]::IsNullOrWhiteSpace($webSiteName)) {
-	try {
-		$state = Get-WebSiteState -Name $webSiteName
-		
-		if ($state.Value -ne "Stopped") {
-			Write-Output "Stopping website..."
-			Stop-WebSite -Name $webSiteName
-		} else {
-			Write-Output "Website is already stopped."
-		}
-	}
-	catch [System.Management.Automation.ItemNotFoundException] {
-		Write-Output "Website does not exist."
+# Start the application pool
+if(![string]::IsNullOrWhiteSpace($applicationPoolName)) {
+	$state = Get-WebAppPoolState -Name $applicationPoolName
+	
+	if ($state.Value -ne "Started") {
+		Write-Output "Starting Application Pool..."
+		Start-WebAppPool -Name $applicationPoolName
+	} else {
+		Write-Output "Application Pool is already started."
 	}
 }
 
-# Stop the application pool
-if(![string]::IsNullOrWhiteSpace($applicationPoolName)) {
-	try {
-		$state = Get-WebAppPoolState -Name $applicationPoolName
-		
-		if ($state.Value -ne "Stopped") {
-			Write-Output "Stopping Application Pool..."
-			Stop-WebAppPool -Name $applicationPoolName
-		} else {
-			Write-Output "Application Pool is already stopped."
-		}
-	}
-	catch [System.Management.Automation.ItemNotFoundException] {
-		Write-Output "Application Pool does not exist."
+# Start the website
+if(![string]::IsNullOrWhiteSpace($websiteName)) {
+	$state = Get-WebsiteState -Name $websiteName
+	
+	if ($state.Value -ne "Started") {
+		Write-Output "Starting website..."
+		Start-Website -Name $websiteName
+	} else {
+		Write-Warning "Website is already started."
 	}
 }

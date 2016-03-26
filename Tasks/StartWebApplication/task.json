@@ -1,10 +1,10 @@
 {
-	"id": "8fd07f89-6bd5-4692-b85f-6e970d15a966",
-	"name": "StopWebApplication",
-	"friendlyName": "IIS: Stop Web Application",
-	"description": "Stop an IIS website and application pool",
+	"id": "ee9e7fe4-2146-4de3-8144-47279d41e515",
+	"name": "StartWebApplication",
+	"friendlyName": "IIS: Start Web Application",
+	"description": "Start an IIS website and application pool",
 	"author": "Christopher Haws",
-	"helpMarkDown": "v0.3.5",
+	"helpMarkDown": "v0.1.6",
 	"category": "Deploy",
 	"visibility": [
 		"Build",
@@ -13,11 +13,11 @@
 	"demands": [],
 	"version": {
 		"Major": "0",
-		"Minor": "3",
-		"Patch": "5"
+		"Minor": "1",
+		"Patch": "6"
 	},
 	"minimumAgentVersion": "1.83.0",
-	"instanceNameFormat": "Stop Web Application $(WebsiteName)",
+	"instanceNameFormat": "Start Web Application $(WebsiteName)",
 	"groups": [
 		{
 			"name": "website",
@@ -83,16 +83,16 @@
 			"defaultValue": "",
 			"required": true,
 			"groupName": "website",
-			"helpMarkDown": "The name of the Website to stop in IIS."
+			"helpMarkDown": "The name of the Website to start in IIS."
 		},
 		{
-			"name": "StopApplicationPool",
+			"name": "StartApplicationPool",
 			"type": "boolean",
-			"label": "Stop Application Pool",
+			"label": "Start Application Pool",
 			"required": false,
 			"groupName": "applicationPool",
 			"defaultValue": "false",
-			"helpMarkDown": "Select the option to stop an application pool."
+			"helpMarkDown": "Select the option to start an application pool."
 		},
 		{
 			"name": "ApplicationPoolName",
@@ -101,13 +101,13 @@
 			"defaultValue": "",
 			"required": true,
 			"groupName": "applicationPool",
-			"visibleRule": "StopApplicationPool = true",
-			"helpMarkDown": "The name of the Application Pool to stop in IIS."
+			"visibleRule": "StartApplicationPool = true",
+			"helpMarkDown": "The name of the Application Pool to start in IIS."
 		}
 	],
 	"execution": {
 		"PowerShell": {
-			"target": "$(currentDirectory)\\StopWebApplication.ps1",
+			"target": "$(currentDirectory)\\StartWebApplication.ps1",
 			"argumentFormat": "",
         	"workingDirectory": "$(currentDirectory)"
 		}
