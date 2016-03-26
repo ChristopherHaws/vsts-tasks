@@ -1,0 +1,83 @@
+{
+	"id": "2463f46d-fd2c-480e-b71b-3d6f7bb7cd05",
+	"name": "StopApplicationPool",
+	"friendlyName": "IIS: Stop Application Pool",
+	"description": "Stops an IIS Application Pool",
+	"author": "Christopher Haws",
+	"helpMarkDown": "v0.2.0",
+	"category": "Deploy",
+	"visibility": [
+		"Build",
+		"Release"
+	],
+	"demands": [],
+	"version": {
+		"Major": "0",
+		"Minor": "1",
+		"Patch": "0"
+	},
+	"minimumAgentVersion": "1.83.0",
+	"instanceNameFormat": "Stop Application Pool $(ApplicationPoolName)",
+	"inputs": [
+		{
+			"name": "EnvironmentName",
+			"type": "multiLine",
+			"label": "Machines",
+			"defaultValue": "",
+			"required": true,
+			"helpMarkDown": "Provide a comma separated list of machine IP addresses or FQDNs along with ports. Port is defaulted based on the selected protocol. <br>Eg: dbserver.fabrikam.com,dbserver_int.fabrikam.com:5986,192.168.12.34:5986 <br>Or provide output variable of other tasks. Eg: $(variableName)"
+		},
+		{
+			"name": "AdminUserName",
+			"type": "string",
+			"label": "Admin Login",
+			"defaultValue": "",
+			"required": false,
+			"helpMarkDown": "Administrator login for the target machines."
+		},
+		{
+			"name": "AdminPassword",
+			"type": "string",
+			"label": "Password",
+			"defaultValue": "",
+			"required": false,
+			"helpMarkDown": "Administrator password for the target machines. <br>It can accept variable defined in Build/Release definitions as '$(passwordVariable)'. <br>You may mark variable type as 'secret' to secure it. "
+		},
+		{
+			"name": "WinRMProtocol",
+			"type": "radio",
+			"label": "Protocol",
+			"required": false,
+			"defaultValue": "",
+			"options": {
+				"Http": "HTTP",
+				"Https": "HTTPS"
+			},
+			"helpMarkDown": "Select the protocol to use for the WinRM connection with the machine(s). Default is HTTPS."
+		},
+		{
+			"name": "TestCertificate",
+			"type": "boolean",
+			"label": "Test Certificate",
+			"defaultValue": "true",
+			"visibleRule": "WinRMProtocol = Https",
+			"required": false,
+			"helpMarkDown": "Select the option to skip validating the authenticity of the machine's certificate by a trusted certification authority. The parameter is required for the WinRM HTTPS protocol."
+		},
+		{
+			"name": "ApplicationPoolName",
+			"type": "string",
+			"label": "Name",
+			"defaultValue": "",
+			"required": true,
+			"helpMarkDown": "The name of the ApplicationPool to stop in IIS."
+		}
+	],
+	"execution": {
+		"PowerShell": {
+			"target": "$(currentDirectory)\\StopApplicationPool.ps1",
+			"argumentFormat": "",
+        	"workingDirectory": "$(currentDirectory)"
+		}
+	}
+}
